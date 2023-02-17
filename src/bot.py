@@ -192,7 +192,7 @@ def run_discord_bot():
     @client.tree.command(name="help", description="Show help for the bot")
     async def help(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=False)
-        await interaction.followup.send(":star:**BASIC COMMANDS** \n\n    - `/chat [message]` Chat with ChatGPT!\n    - `/public` ChatGPT switch to public mode \n    - `/replyall`  ChatGPT switch between replyall mode and default mode\n    - `/reset` Clear ChatGPT conversation history\n\nFor complete documentation, please visit https://github.com/lvlcn-t/chat_tx")
+        await interaction.followup.send("**BASIC COMMANDS** \n\n    - `/chat [message]` Chat with ChatGPT!\n    - `/public` ChatGPT switch to public mode \n    - `/replyall`  ChatGPT switch between replyall mode and default mode\n    - `/reset` Clear ChatGPT conversation history\n\nFor complete documentation, please visit https://github.com/lvlcn-t/chat_tx")
         logger.info(
             "\x1b[31mSomeone need help!\x1b[0m")
 
@@ -206,7 +206,5 @@ def run_discord_bot():
             channel = str(message.channel)
             logger.info(f"\x1b[31m{username}\x1b[0m : '{user_message}' ({channel})")
             await send_message(message, user_message)
-    
-    TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
-    client.run(TOKEN)
+    client.run(os.getenv("DISCORD_BOT_TOKEN"))
